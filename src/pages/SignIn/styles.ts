@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { shade } from "polished";
-import SignInBackground from "../../assets/img_logo_iot_reduzido_sobre.svg";
+import SignInBackground from "../../assets/0157c7d06bb18a3.jpg";
 
 export const Container = styled.div`
   height: 100vh;
