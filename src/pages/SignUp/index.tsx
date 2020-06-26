@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useCallback, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import * as Yup from "yup";
@@ -11,7 +12,7 @@ import logoImg from "../../assets/logo.svg";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
-import { Container, Content, Background } from "./styles";
+import { Container, Content, AnimationContainer, Background } from "./styles";
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -40,25 +41,26 @@ const SignUp: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <AnimationContainer>
           <img src={logoImg} alt="Logo" />
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Faça seu cadastro</h1>
+            <Input name="name" icon={FiUser} placeholder="Nome" />
+            <Input name="email" icon={FiMail} placeholder="E-mail" />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Senha"
+            />
+            <Button type="submit">Cadastrar</Button>
+          </Form>
 
-          <h1>Faça seu cadastro</h1>
-          <Input name="name" icon={FiUser} placeholder="Nome" />
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
-          <Input
-            name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Senha"
-          />
-          <Button type="submit">Cadastrar</Button>
-        </Form>
-
-        <a href="/">
-          <FiArrowLeft size={16} />
-          Voltar para logon
-        </a>
+          <Link to="/">
+            <FiArrowLeft size={16} />
+            Voltar para logon
+          </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );
