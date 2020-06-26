@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { useCallback, useRef, useContext } from "react";
+import React, { useCallback, useRef } from "react";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import * as Yup from "yup";
 import { FiLogIn, FiMail, FiLock } from "react-icons/fi";
 
 import getValidationErrors from "../../utils/getValidationErrors";
-import { AuthContext } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 
 import logoImg from "../../assets/logo.svg";
 import Input from "../../components/Input";
@@ -22,7 +22,7 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
